@@ -1,0 +1,42 @@
+{
+  "name": "sobear",
+  "version": "0.0.0",
+  "description": "Reusable Cursor agent skills for repo bootstrapping and npm release flows.",
+  "license": "MIT",
+  "author": "imsobear <sobear.me@gmail.com>",
+  "homepage": "https://github.com/imsobear/skills#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imsobear/skills.git"
+  },
+  "bugs": {
+    "url": "https://github.com/imsobear/skills/issues"
+  },
+  "keywords": [
+    "cursor",
+    "cursor-agent",
+    "agent-skills",
+    "skills",
+    "ai"
+  ],
+  "type": "module",
+  "bin": {
+    "sobear": "./bin/cli.mjs"
+  },
+  "files": [
+    "bin",
+    "create-github-repo",
+    "open-new-version",
+    "release-version",
+    "setup-npm-publishing",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

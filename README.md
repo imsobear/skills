@@ -1,9 +1,10 @@
-# skills
+# sobear
 
-Reusable Agent Skills — focused, opinionated
-SKILL.md files the agent loads on demand.
+Reusable [Cursor Agent Skills](https://docs.cursor.com/) — focused, opinionated
+SKILL.md files the agent loads on demand. Distributed as the [`sobear`](https://www.npmjs.com/package/sobear)
+npm package with a tiny installer.
 
-## What's here
+## Skills
 
 | Skill | Purpose |
 |---|---|
@@ -21,12 +22,38 @@ create-github-repo  →  setup-npm-publishing  →  open-new-version  ⇄  relea
 
 ## Install
 
-Drop any of these directories into one of:
+Cursor reads skills from `~/.cursor/skills/` (personal) or `<project>/.cursor/skills/`
+(project-scoped). It does **not** read from `node_modules/`, so an installer step
+is required.
 
-- `~/.cursor/skills/` — personal, available across all your projects
-- `<project>/.cursor/skills/` — project-scoped, shared via the repo
+### Personal (default)
 
-Cursor picks them up automatically.
+```bash
+npx sobear install
+# -> ~/.cursor/skills/
+```
+
+### Project-scoped
+
+```bash
+npx sobear install --project
+# -> <cwd>/.cursor/skills/
+```
+
+### Custom location
+
+```bash
+npx sobear install --path /some/where
+```
+
+By default existing skill directories are left alone. Pass `--force` to
+overwrite.
+
+### List bundled skills
+
+```bash
+npx sobear list
+```
 
 ## License
 

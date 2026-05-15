@@ -15,13 +15,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
       - name: Every top-level skill dir must contain a SKILL.md
         run: |
           set -euo pipefail
           fail=0
           for dir in */; do
             case "$dir" in
-              .git/|.github/) continue ;;
+              .git/|.github/|bin/|node_modules/) continue ;;
             esac
             if [ ! -f "${dir}SKILL.md" ]; then
               echo "Missing SKILL.md in ${dir}"
@@ -40,3 +44,15 @@ jobs:
             grep -q '^description:' "$f" || { echo "$f: missing 'description:'"; fail=1; }
           done
           exit "$fail"
+
+      - name: CLI loads and lists bundled skills
+        run: node bin/cli.mjs list
+
+      - name: CLI installs into a temp dir
+        run: |
+          set -euo pipefail
+          tmp="$(mktemp -d)"
+          node bin/cli.mjs install --path "$tmp"
+          for d in create-github-repo open-new-version release-version setup-npm-publishing; do
+            test -f "$tmp/$d/SKILL.md" || { echo "Missing $tmp/$d/SKILL.md after install"; exit 1; }
+          done

@@ -1,3 +1,9 @@
+# deps
+node_modules/
+
+# packed tarballs
+*.tgz
+
 # OS / editor
 .DS_Store
 Thumbs.db
