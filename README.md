@@ -1,9 +1,10 @@
 # skills
 
-Reusable [Cursor Agent Skills](https://docs.cursor.com/) — focused, opinionated
-SKILL.md files the agent loads on demand.
+Reusable Agent Skills — focused, opinionated SKILL.md files an agent loads
+on demand. Distributed via [`npx skills`](https://github.com/vercel-labs/skills),
+which installs them into whichever AI coding agent(s) you have set up.
 
-## What's here
+## Skills
 
 | Skill | Purpose |
 |---|---|
@@ -21,12 +22,48 @@ create-github-repo  →  setup-npm-publishing  →  open-new-version  ⇄  relea
 
 ## Install
 
-Drop any of these directories into one of:
+```bash
+npx skills add imsobear/skills
+```
 
-- `~/.cursor/skills/` — personal, available across all your projects
-- `<project>/.cursor/skills/` — project-scoped, shared via the repo
+[`npx skills`](https://github.com/vercel-labs/skills) (vercel-labs/skills)
+discovers `*/SKILL.md` files in this repo and installs them into the right
+location for whichever agents you have — Cursor, Claude Code, Codex,
+OpenCode, GitHub Copilot, Windsurf, Cline, and 50+ others.
 
-Cursor picks them up automatically.
+### Other commands
+
+```bash
+npx skills list                  # what's installed locally
+npx skills update                # pull latest from each installed source
+npx skills remove imsobear/skills
+```
+
+See the [`npx skills` docs](https://github.com/vercel-labs/skills) for
+selective installation (single skill), pinning to a specific git ref,
+project- vs global-scope, symlink vs copy, and CI/non-interactive mode.
+
+### Local development
+
+Point `npx skills` at a local checkout instead of this repo's GitHub URL:
+
+```bash
+npx skills add ./path/to/skills
+```
+
+## Repository layout
+
+```
+skills/
+├── create-github-repo/SKILL.md
+├── setup-npm-publishing/SKILL.md
+├── open-new-version/SKILL.md
+└── release-version/SKILL.md
+```
+
+CI validates that every top-level directory contains a `SKILL.md` with a
+`name:` and `description:` in its YAML frontmatter — so just adding a new
+`<skill-name>/SKILL.md` is enough to ship a new skill.
 
 ## License
 
