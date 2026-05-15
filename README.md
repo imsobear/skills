@@ -1,6 +1,6 @@
 # skills
 
-Reusable [Cursor Agent Skills](https://docs.cursor.com/) — focused, opinionated
+Reusable Agent Skills — focused, opinionated
 SKILL.md files the agent loads on demand.
 
 ## What's here
