@@ -1,6 +1,6 @@
 {
   "name": "@sobear/skills",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Reusable Cursor agent skills for repo bootstrapping and npm release flows.",
   "license": "MIT",
   "author": "imsobear <sobear.me@gmail.com>",
