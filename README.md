@@ -1,9 +1,8 @@
 # @sobear/skills
 
-Reusable [Cursor Agent Skills](https://docs.cursor.com/) — focused, opinionated
-SKILL.md files the agent loads on demand. Distributed as the
-[`@sobear/skills`](https://www.npmjs.com/package/@sobear/skills) npm package
-with a tiny installer.
+Reusable Agent Skills — focused, opinionated SKILL.md files the agent loads
+on demand. Distributed as the [`@sobear/skills`](https://www.npmjs.com/package/@sobear/skills)
+npm package with a tiny installer.
 
 ## Skills
 
