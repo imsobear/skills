@@ -1,8 +1,9 @@
-# sobear
+# @sobear/skills
 
 Reusable [Cursor Agent Skills](https://docs.cursor.com/) — focused, opinionated
-SKILL.md files the agent loads on demand. Distributed as the [`sobear`](https://www.npmjs.com/package/sobear)
-npm package with a tiny installer.
+SKILL.md files the agent loads on demand. Distributed as the
+[`@sobear/skills`](https://www.npmjs.com/package/@sobear/skills) npm package
+with a tiny installer.
 
 ## Skills
 
@@ -29,21 +30,21 @@ is required.
 ### Personal (default)
 
 ```bash
-npx sobear install
+npx @sobear/skills install
 # -> ~/.cursor/skills/
 ```
 
 ### Project-scoped
 
 ```bash
-npx sobear install --project
+npx @sobear/skills install --project
 # -> <cwd>/.cursor/skills/
 ```
 
 ### Custom location
 
 ```bash
-npx sobear install --path /some/where
+npx @sobear/skills install --path /some/where
 ```
 
 By default existing skill directories are left alone. Pass `--force` to
@@ -52,8 +53,11 @@ overwrite.
 ### List bundled skills
 
 ```bash
-npx sobear list
+npx @sobear/skills list
 ```
+
+After `npm i -g @sobear/skills`, the same commands are available as
+`sobear list` / `sobear install`.
 
 ## License
 
