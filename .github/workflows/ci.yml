@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches-ignore: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Every top-level skill dir must contain a SKILL.md
+        run: |
+          set -euo pipefail
+          fail=0
+          for dir in */; do
+            case "$dir" in
+              .git/|.github/) continue ;;
+            esac
+            if [ ! -f "${dir}SKILL.md" ]; then
+              echo "Missing SKILL.md in ${dir}"
+              fail=1
+            fi
+          done
+          exit "$fail"
+
+      - name: SKILL.md frontmatter must declare name + description
+        run: |
+          set -euo pipefail
+          fail=0
+          for f in */SKILL.md; do
+            head -n 1 "$f" | grep -qx -- '---' || { echo "$f: missing opening ---"; fail=1; continue; }
+            grep -q '^name:'        "$f" || { echo "$f: missing 'name:'";        fail=1; }
+            grep -q '^description:' "$f" || { echo "$f: missing 'description:'"; fail=1; }
+          done
+          exit "$fail"
